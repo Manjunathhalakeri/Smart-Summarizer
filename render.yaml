@@ -18,4 +18,14 @@ services:
         sync: false
       - key: DB_PORT
         sync: false
+  - type: static
+    name: smart-summarizer-frontend
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        # TODO: set this to your deployed backend URL after API deploy,
+        # e.g., https://smart-summarizer-api.onrender.com
+        value: "https://REPLACE_WITH_BACKEND_URL"
 
